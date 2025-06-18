@@ -197,6 +197,12 @@
 		forwardAgent = true;
 		serverAliveInterval = 30;
 		addKeysToAgent = "confirm";
+
+		matchBlocks = {
+		    "*" = {
+		      identityFile = "~/.ssh/id_ed25519";
+		    };
+		  };
 	};
 
 	programs.gh.enable = true;
@@ -205,6 +211,7 @@
 	programs.fastfetch.enable = true;
 
 
+	# configure services here
 	services = {
 		ssh-agent.enable = true;
 	};
