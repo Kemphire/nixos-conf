@@ -187,6 +187,7 @@
 		userEmail = "kartikeyshahi@hotmail.com";
 		extraConfig = {
 		  init.defaultBranch = "master";
+		  push.autoSetupRemote = true;
 		};
 	};
 
