@@ -114,6 +114,12 @@
 		shellAbbrs = {
 			nrs = "sudo nixos-rebuild switch";
 			n = "nvim";
+			gs = "git status";
+			ga = "git add -A";
+			gc = "git commit";
+			gp = "git push";
+			gco = "git checkout";
+			lg = "lazygit";
 		};
 		plugins = with pkgs.fishPlugins; [
 		 {
