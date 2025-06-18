@@ -127,7 +127,15 @@ programs.fish.enable = true;
 programs.kdeconnect.enable = true;
 
 # temporary solution to run binaries in nix-os
-programs.nix-ld.enable = true;
+programs.nix-ld = {
+	enable = true;
+	libraries = with pkgs; [
+	      glibc
+	      zlib
+	      openssl
+	      libgcc
+        ];
+};
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
