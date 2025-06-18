@@ -196,6 +196,7 @@
 		enable = true;
 		forwardAgent = true;
 		serverAliveInterval = 30;
+		addKeysToAgent = "confirm";
 	};
 
 	programs.gh.enable = true;
@@ -204,5 +205,8 @@
 	programs.fastfetch.enable = true;
 
 
+	services = {
+		ssh-agent.enable = true;
+	};
 
 }
