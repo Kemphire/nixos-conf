@@ -213,6 +213,7 @@
 
 	# configure services here
 	services = {
+
 		ssh-agent.enable = true;
 	};
 
