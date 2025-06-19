@@ -73,6 +73,7 @@
     nixd
     cargo
     imagemagick_light
+    obsidian
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
