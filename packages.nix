@@ -38,4 +38,5 @@ with pkgs; [
 
   man-pages
   man-pages-posix
+  devenv
 ]
