@@ -62,6 +62,7 @@
 		fastfetch
 		neofetch
 		neovim
+		pokemon-colorscripts-mac
 
   ];
 
