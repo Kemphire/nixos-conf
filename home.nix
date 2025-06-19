@@ -67,6 +67,8 @@
 		unzip
 		zip
 		python314
+		alejandra
+		nixd
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
