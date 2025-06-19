@@ -71,7 +71,8 @@
     python314
     alejandra
     nixd
-		cargo
+    cargo
+    imagemagick_light
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
