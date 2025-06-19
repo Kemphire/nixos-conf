@@ -63,7 +63,10 @@
 		neofetch
 		neovim
 		pokemon-colorscripts-mac
-
+					nodejs_24
+		unzip
+		zip
+		python314
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

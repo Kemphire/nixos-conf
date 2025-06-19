@@ -37,6 +37,6 @@ with pkgs; [
 	    wayland-utils # Wayland utilities
 	    wl-clipboard # Command-line copy/paste utilities for Wayland
 
-	    pkgs.man-pages
-	    pkgs.man-pages-posix
+	    man-pages
+	    man-pages-posix
 ]

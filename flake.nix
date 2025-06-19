@@ -29,6 +29,7 @@
 				modules = [./home.nix];
 			};
 		};
+		home-manager.backupFileExtension = "backup";
 
 	};
 }
