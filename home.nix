@@ -74,6 +74,7 @@
     cargo
     imagemagick_light
     obsidian
+    banana-cursor
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -110,6 +111,14 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     # MANPAGER = "nvim +Man!";
+  };
+
+  home.pointerCursor = {
+    enable = true;
+    name = "banana-cursor";
+    package = pkgs.banana-cursor;
+    size = 30;
+    gtk.enable = true;
   };
 
   # Let Home Manager install and manage itself.

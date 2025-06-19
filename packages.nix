@@ -16,7 +16,6 @@ with pkgs; [
   rofi
   mpv
   qalculate-qt
-  banana-cursor
   libqalculate
 
   # kde utils
