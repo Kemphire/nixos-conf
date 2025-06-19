@@ -4,7 +4,6 @@ with pkgs; [
 	     vim 
 	     wget
 	     gcc
-	neovim
 	kitty
 	fish
 	bluetui
@@ -37,4 +36,7 @@ with pkgs; [
 	    haruna # Open source video player built with Qt/QML and libmpv
 	    wayland-utils # Wayland utilities
 	    wl-clipboard # Command-line copy/paste utilities for Wayland
+
+	    pkgs.man-pages
+	    pkgs.man-pages-posix
 ]

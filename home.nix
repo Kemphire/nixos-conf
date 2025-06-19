@@ -62,6 +62,7 @@
 		vesktop
 		fastfetch
 		neofetch
+		neovim
 
   ];
 
@@ -78,6 +79,8 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".config/nvim".source = ./dotfiles_imper/.config/nvim;
   };
 
   # Home Manager can also manage your environment variables through
@@ -98,7 +101,7 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
-    MANPAGER = "nvim +Man!";
+    # MANPAGER = "nvim +Man!";
   };
 
   # Let Home Manager install and manage itself.
