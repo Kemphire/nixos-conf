@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -80,7 +79,6 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    ".config/nvim".source = ./dotfiles_imper/.config/nvim;
   };
 
   # Home Manager can also manage your environment variables through
