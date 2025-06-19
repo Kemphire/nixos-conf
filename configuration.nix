@@ -1,25 +1,26 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 # let
 #   home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz;
 # in
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      # (import "${home-manager}/nixos")
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    # (import "${home-manager}/nixos")
+  ];
 
-    # home-manager.useUserPackages  = true;
-    # home-manager.useGlobalPkgs = true;
-    # home-manager.backupFileExtension = "backup";
-    # home-manager.users.hitmonlee = import ./home.nix;
-
+  # home-manager.useUserPackages  = true;
+  # home-manager.useGlobalPkgs = true;
+  # home-manager.backupFileExtension = "backup";
+  # home-manager.users.hitmonlee = import ./home.nix;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -28,21 +29,20 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
- networking.hostName = "kapil"; # Define your hostname.
+  networking.hostName = "kapil"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
   services.timesyncd.enable = true;
 
   nixpkgs.config = {
-	  allowUnfree = true;
+    allowUnfree = true;
   };
 
-
-		nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -58,39 +58,36 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-services.xserver  = {
-	enable = true;
-	windowManager.qtile.enable = true;
-	displayManager.sessionCommands = ''
-		xwallpaper --zoom /mnt/yummy/Pictures/wallpapers_many/b-846.jpg
-		xset r rate 200 35 &
-		xrandr --output eDP-1 --scale 0.75x0.75
-		'';
-};
+  services.xserver = {
+    enable = true;
+    windowManager.qtile.enable = true;
+    displayManager.sessionCommands = ''
+      xwallpaper --zoom /mnt/yummy/Pictures/wallpapers_many/b-846.jpg
+      xset r rate 200 35 &
+      xrandr --output eDP-1 --scale 0.75x0.75
+    '';
+  };
 
-# to enable kde-plasma
-services = {
-  desktopManager.plasma6.enable = true;
+  # to enable kde-plasma
+  services = {
+    desktopManager.plasma6.enable = true;
 
-  # displayManager.sddm.enable = true;
-  #
-  # displayManager.sddm.wayland.enable = true;
-};
+    # displayManager.sddm.enable = true;
+    #
+    # displayManager.sddm.wayland.enable = true;
+  };
 
-# mounting my old data
-    fileSystems."/mnt/yummy" = 
-    {
+  # mounting my old data
+  fileSystems."/mnt/yummy" = {
+    device = "dev/disk/by-uuid/23f9823f-d6e0-4eaa-8d8f-8f70b686be4c";
+    fsType = "btrfs";
+    options = ["defaults" "user" "rw"];
+  };
 
-device = "dev/disk/by-uuid/23f9823f-d6e0-4eaa-8d8f-8f70b686be4c";
-fsType = "btrfs";
-options = ["defaults" "user" "rw"];
-    };
-
-hardware.bluetooth = {
-enable = true;
-  powerOnBoot = true;
-};
-  
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -112,40 +109,40 @@ enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.hitmonlee = {
-   isNormalUser = true;
-	description = "Kartikey";
-   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-	shell = pkgs.fish;
-	home = "/home/hitmonlee";
-   packages = with pkgs; [
-     tree
-   ];
+    isNormalUser = true;
+    description = "Kartikey";
+    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+    shell = pkgs.fish;
+    home = "/home/hitmonlee";
+    packages = with pkgs; [
+      tree
+    ];
   };
 
   programs.firefox.enable = true;
-programs.fish.enable = true;
-programs.kdeconnect.enable = true;
+  programs.fish.enable = true;
+  programs.kdeconnect.enable = true;
 
-# temporary solution to run binaries in nix-os
-programs.nix-ld = {
-	enable = true;
-	libraries = with pkgs; [
-	      glibc
-	      zlib
-	      openssl
-	      libgcc
-        ];
-};
+  # temporary solution to run binaries in nix-os
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      glibc
+      zlib
+      openssl
+      libgcc
+    ];
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-   environment.systemPackages = with pkgs; import ./packages.nix { inherit pkgs; };
+  environment.systemPackages = with pkgs; import ./packages.nix {inherit pkgs;};
 
-# for fonts
-   fonts.packages = with pkgs; [
-   fira-code
-  fira-code-symbols
-   ];
+  # for fonts
+  fonts.packages = with pkgs; [
+    fira-code
+    fira-code-symbols
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -193,7 +190,4 @@ programs.nix-ld = {
   # All the custom thing go here from now
 
   documentation.dev.enable = true;
-
-
 }
-

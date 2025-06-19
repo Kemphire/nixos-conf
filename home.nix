@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "hitmonlee";
@@ -7,7 +10,6 @@
 
   # find alternative for it
   # home.backupFileExtension = "backup";
-
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -20,7 +22,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages =with pkgs; [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -38,37 +40,38 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-		bat
-		zoxide
-		starship
-		fzf
-		alacritty
-		zathura
-		vivaldi
-		fish
-		kitty
-		sioyek
-		xremap # Have to set it up, first learn more about home-manager
-		git
-		lazygit
-		openssh
-		gh
-		eza
-		kdePackages.kdenlive
-		pandoc
-		qutebrowser
-		libreoffice-qt
-		vesktop
-		fastfetch
-		neofetch
-		neovim
-		pokemon-colorscripts-mac
-					nodejs_24
-		unzip
-		zip
-		python314
-		alejandra
-		nixd
+    bat
+    zoxide
+    starship
+    fzf
+    alacritty
+    zathura
+    vivaldi
+    fish
+    kitty
+    sioyek
+    xremap # Have to set it up, first learn more about home-manager
+    git
+    lazygit
+    openssh
+    gh
+    eza
+    kdePackages.kdenlive
+    pandoc
+    qutebrowser
+    libreoffice-qt
+    vesktop
+    fastfetch
+    neofetch
+    neovim
+    pokemon-colorscripts-mac
+    nodejs_24
+    unzip
+    zip
+    python314
+    alejandra
+    nixd
+		cargo
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -84,7 +87,6 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-
   };
 
   # Home Manager can also manage your environment variables through
@@ -111,123 +113,117 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  	programs.fish = {
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      btw = "echo i use nix btw";
+      ls = "eza -lah --icons";
+    };
+    shellAbbrs = {
+      nrs = "sudo nixos-rebuild switch";
+      n = "nvim";
+      gs = "git status";
+      ga = "git add -A";
+      gc = "git commit";
+      gp = "git push";
+      gco = "git checkout";
+      lg = "lazygit";
+    };
+    plugins = with pkgs.fishPlugins; [
+      {
+        name = "pure";
+        src = pure.src;
+      }
+      {
+        name = "autopair";
+        src = autopair.src;
+      }
+      {
+        name = "colored-man-pages";
+        src = colored-man-pages.src;
+      }
+    ];
+    shellInit = ''
+      function fish_default_key_bindings
+      	fish_vi_key_bindings
+      end
+      function ls
+      	eza -lah --icons $argv
+      end
+    '';
+  };
+  programs.kitty = {
+    enable = true;
+    settings = {
+      scrollback_lines = 10000;
+      background_opacity = 0.7;
+      font_size = 16;
+      disable_ligatures = "never";
+      cursor_shape = "beam";
+      tab_bar_edge = "top";
+      tab_bar_style = "powerline";
+      background_blur = 10;
+      font_family = "Fira Code";
+      cursor_trail = 1;
+    };
+    shellIntegration.enableFishIntegration = true;
+  };
 
-		enable = true;
-		shellAliases = {
-			btw = "echo i use nix btw";
-			ls = "eza -lah --icons";
-		};
-		shellAbbrs = {
-			nrs = "sudo nixos-rebuild switch";
-			n = "nvim";
-			gs = "git status";
-			ga = "git add -A";
-			gc = "git commit";
-			gp = "git push";
-			gco = "git checkout";
-			lg = "lazygit";
-		};
-		plugins = with pkgs.fishPlugins; [
-		 {
-		      name = "pure";
-		      src = pure.src; 
-		    }
-		    {
-		      name = "autopair";
-		      src = autopair.src;  
-		    }
-		    {
-		      name = "colored-man-pages";
-		      src = colored-man-pages.src;  
-		    }
-		];
-		shellInit = ''
-		function fish_default_key_bindings
-			fish_vi_key_bindings
-		end
-		function ls
-			eza -lah --icons $argv
-		end
-		'';
-	};
-	programs.kitty = {
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      window.opacity = 0.8;
+      font.size = 16;
+    };
+  };
 
-		enable = true;
-		settings = {
-			scrollback_lines = 10000;
-			background_opacity = 0.7;
-			font_size = 16;
-			disable_ligatures = "never";
-			cursor_shape = "beam";
-			tab_bar_edge  = "top";
-			tab_bar_style = "powerline";
-			background_blur  = 10;
-			font_family = "Fira Code";
-			cursor_trail = 1;
-		};
-		shellIntegration.enableFishIntegration = true;
+  programs.vivaldi.enable = true;
+  programs.zoxide.enable = true;
+  programs.fzf.enable = true;
 
-	};
+  programs.zoxide.enableFishIntegration = true;
+  programs.fzf.enableFishIntegration = true;
 
-	programs.alacritty = {
-		enable = true;
-		settings = {
-			window.opacity = 0.8;
-			font.size = 16;
-		};
-	};
+  programs.sioyek = {
+    enable = true;
+    config = {
+      "should_launch_new_window" = "1";
+      "default_dark_mode" = "1";
+      "show_doc_path" = "1";
+    };
+  };
 
-	programs.vivaldi.enable = true;
-	programs.zoxide.enable = true;
-	programs.fzf.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "Kartikey Shahi";
+    userEmail = "kartikeyshahi@hotmail.com";
+    extraConfig = {
+      init.defaultBranch = "master";
+      push.autoSetupRemote = true;
+    };
+  };
 
-	programs.zoxide.enableFishIntegration = true;
-	programs.fzf.enableFishIntegration = true;
+  programs.lazygit.enable = true;
+  programs.ssh = {
+    enable = true;
+    forwardAgent = true;
+    serverAliveInterval = 30;
+    addKeysToAgent = "confirm";
 
-	programs.sioyek = {
-		enable = true;
-		config = {
-			"should_launch_new_window" = "1";
-			"default_dark_mode"= "1";
-			"show_doc_path" = "1";
-		};
-	};
+    matchBlocks = {
+      "*" = {
+        identityFile = "~/.ssh/id_ed25519";
+      };
+    };
+  };
 
-	programs.git = {
-		enable = true;
-		userName = "Kartikey Shahi";
-		userEmail = "kartikeyshahi@hotmail.com";
-		extraConfig = {
-		  init.defaultBranch = "master";
-		  push.autoSetupRemote = true;
-		};
-	};
+  programs.gh.enable = true;
+  programs.qutebrowser.enable = true;
+  programs.vesktop.enable = true;
+  programs.fastfetch.enable = true;
 
-	programs.lazygit.enable = true;
-	programs.ssh = {
-		enable = true;
-		forwardAgent = true;
-		serverAliveInterval = 30;
-		addKeysToAgent = "confirm";
-
-		matchBlocks = {
-		    "*" = {
-		      identityFile = "~/.ssh/id_ed25519";
-		    };
-		  };
-	};
-
-	programs.gh.enable = true;
-	programs.qutebrowser.enable = true;
-	programs.vesktop.enable = true;
-	programs.fastfetch.enable = true;
-
-
-	# configure services here
-	services = {
-
-		ssh-agent.enable = true;
-	};
-
+  # configure services here
+  services = {
+    ssh-agent.enable = true;
+  };
 }
