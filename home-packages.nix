@@ -35,4 +35,6 @@ with pkgs; [
   imagemagick_light
   obsidian
   banana-cursor
+  clang-tools
+  clang
 ]

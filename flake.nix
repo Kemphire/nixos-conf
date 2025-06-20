@@ -29,7 +29,16 @@
     nixosConfigurations = {
       kapil = lib.nixosSystem {
         inherit system;
-        modules = [./configuration.nix];
+
+        modules = [
+          ./configuration.nix
+
+          {
+            environment.extraOutputsToInstall = ["dev"];
+
+            environment.variables.C_INCLUDE_PATH = "${pkgs.expat.dev}/include";
+          }
+        ];
       };
     };
     homeConfigurations = {

@@ -193,4 +193,8 @@
   # All the custom thing go here from now
 
   documentation.dev.enable = true;
+
+  # environment.extraOutputsToInstall = [ "dev" ];
+  #
+  # environment.variables.C_INCLUDE_PATH = "${pkgs.expat.dev}/include";
 }
