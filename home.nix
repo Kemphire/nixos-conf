@@ -1,8 +1,11 @@
 {
   config,
   pkgs,
+  dotfiles,
   ...
-}: {
+}: let
+  configDir = dotfiles;
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "hitmonlee";
@@ -22,60 +25,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-
-    bat
-    zoxide
-    starship
-    fzf
-    alacritty
-    zathura
-    vivaldi
-    fish
-    kitty
-    sioyek
-    xremap # Have to set it up, first learn more about home-manager
-    git
-    lazygit
-    openssh
-    gh
-    eza
-    kdePackages.kdenlive
-    pandoc
-    qutebrowser
-    libreoffice-qt
-    vesktop
-    fastfetch
-    neofetch
-    neovim
-    pokemon-colorscripts-mac
-    nodejs_24
-    unzip
-    zip
-    python314
-    alejandra
-    nixd
-    cargo
-    imagemagick_light
-    obsidian
-    banana-cursor
-  ];
+  home.packages = import ./home-packages.nix {inherit pkgs;};
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -90,6 +40,7 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink (builtins.toString "${configDir}/.config/nvim");
   };
 
   # Home Manager can also manage your environment variables through

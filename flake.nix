@@ -5,12 +5,18 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    dotfiles_imper = {
+      url = "git+file:dotfiles_imper";
+      flake = false;
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    dotfiles_imper,
     ...
   }: let
     lib = nixpkgs.lib;
@@ -29,10 +35,14 @@
     homeConfigurations = {
       hitmonlee = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [./home.nix];
+        modules = [
+          ./home.nix
+
+          {
+            _module.args.dotfiles = dotfiles_imper;
+          }
+        ];
       };
     };
-
-    home-manager.backupFileExtension = "backup";
   };
 }

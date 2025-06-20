@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "dotfiles_imper": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750363770,
+        "narHash": "sha256-Cf7a3evhvSjt6DjolBhcByvMnqO8Ce3+adzbNC3iknk=",
+        "ref": "refs/heads/mukhya",
+        "rev": "398abc14970b13f16df35b95388e6e26738f470b",
+        "revCount": 215,
+        "type": "git",
+        "url": "file:dotfiles_imper"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:dotfiles_imper"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -37,6 +53,7 @@
     },
     "root": {
       "inputs": {
+        "dotfiles_imper": "dotfiles_imper",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }
