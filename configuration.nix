@@ -14,13 +14,8 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    # (import "${home-manager}/nixos")
+    ./settings/system-settings.nix
   ];
-
-  # home-manager.useUserPackages  = true;
-  # home-manager.useGlobalPkgs = true;
-  # home-manager.backupFileExtension = "backup";
-  # home-manager.users.hitmonlee = import ./home.nix;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
