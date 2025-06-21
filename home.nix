@@ -172,11 +172,11 @@ in {
     serverAliveInterval = 30;
     addKeysToAgent = "confirm";
 
-    matchBlocks = {
-      "github.com" = {
-        identityFile = "~/.ssh/id_ed25519";
-      };
-    };
+    # matchBlocks = {
+    #   "github.com" = {
+    #     identityFile = "~/.ssh/id_ed25519";
+    #   };
+    # };
   };
 
   programs.gh.enable = true;
