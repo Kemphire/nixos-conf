@@ -180,7 +180,6 @@ in {
   };
 
   programs.gh.enable = true;
-  programs.qutebrowser.enable = true;
   programs.vesktop.enable = true;
   programs.fastfetch.enable = true;
 

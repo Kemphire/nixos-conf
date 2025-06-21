@@ -18,7 +18,6 @@ with pkgs; [
   eza
   kdePackages.kdenlive
   pandoc
-  qutebrowser
   libreoffice-qt
   vesktop
   fastfetch
