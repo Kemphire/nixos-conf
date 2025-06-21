@@ -3,11 +3,11 @@
     "dotfiles_imper": {
       "flake": false,
       "locked": {
-        "lastModified": 1750363770,
-        "narHash": "sha256-Cf7a3evhvSjt6DjolBhcByvMnqO8Ce3+adzbNC3iknk=",
+        "lastModified": 1750457500,
+        "narHash": "sha256-YvpxHywZIdeV+AHIDDwuZXMdWkRjrQN+xloBu7o7qrE=",
         "ref": "refs/heads/mukhya",
-        "rev": "398abc14970b13f16df35b95388e6e26738f470b",
-        "revCount": 215,
+        "rev": "0e5ccc76e30eae0191dfeeeffacd81cff1f0a966",
+        "revCount": 218,
         "type": "git",
         "url": "file:dotfiles_imper"
       },
@@ -38,11 +38,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1750134718,
-        "narHash": "sha256-v263g4GbxXv87hMXMCpjkIxd/viIF7p3JpJrwgKdNiI=",
+        "lastModified": 1750365781,
+        "narHash": "sha256-XE/lFNhz5lsriMm/yjXkvSZz5DfvKJLUjsS6pP8EC50=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+        "rev": "08f22084e6085d19bcfb4be30d1ca76ecb96fe54",
         "type": "github"
       },
       "original": {

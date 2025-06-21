@@ -37,4 +37,5 @@ with pkgs; [
   banana-cursor
   ccls
   cmake
+  gnumake
 ]
