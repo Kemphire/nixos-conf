@@ -36,4 +36,5 @@ with pkgs; [
   obsidian
   banana-cursor
   ccls
+  cmake
 ]
