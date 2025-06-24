@@ -118,13 +118,13 @@ in {
     enable = true;
     settings = {
       scrollback_lines = 10000;
-      background_opacity = 0.7;
+      background_opacity = 0.6;
       font_size = 16;
       disable_ligatures = "never";
       cursor_shape = "beam";
       tab_bar_edge = "top";
       tab_bar_style = "powerline";
-      background_blur = 10;
+      background_blur = 5;
       font_family = "Fira Code";
       cursor_trail = 1;
     };
