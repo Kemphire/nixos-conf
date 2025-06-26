@@ -113,6 +113,11 @@ in {
       	eza -lah --icons $argv
       end
     '';
+    interactiveShellInit = ''
+      if test -d "$HOME/.bun/bin"
+          fish_add_path "$HOME/.bun/bin"
+      end
+    '';
   };
   programs.kitty = {
     enable = true;

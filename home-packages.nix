@@ -31,10 +31,14 @@ with pkgs; [
   alejandra
   nixd
   cargo
-  imagemagick_light
+  imagemagickBig
   obsidian
   banana-cursor
+
   ccls
   cmake
   gnumake
+  bun
+
+  telegram-desktop
 ]
