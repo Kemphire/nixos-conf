@@ -193,8 +193,30 @@ in {
   programs.gh.enable = true;
   programs.vesktop.enable = true;
   programs.fastfetch.enable = true;
+
   # zen-browser
-  programs.zen-browser.enable = true;
+  programs.zen-browser = {
+    enable = true;
+    policies = {
+      FirefoxHome = {
+        Search = true;
+      };
+      Preferences = {
+        "zen.tabs.vertical.right-side" = {
+          "value" = true;
+          "Status" = "locked";
+        };
+        "zen.urlbar.behavior" = {
+          "value" = "floating-on-type";
+          "Status" = "locked";
+        };
+        "zen.view.compact.hide-toolbar" = {
+          "value" = true;
+          "Status" = "locked";
+        };
+      };
+    };
+  };
 
   # configure services here
   services = {
