@@ -9,6 +9,7 @@ with pkgs; [
   vivaldi
   fish
   kitty
+  foot
   sioyek
   xremap # Have to set it up, first learn more about home-manager
   git
@@ -35,10 +36,8 @@ with pkgs; [
   obsidian
   banana-cursor
 
-  ccls
-  cmake
   gnumake
-  bun
+  gopls
 
   telegram-desktop
 ]

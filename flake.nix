@@ -10,15 +10,22 @@
       url = "git+file:dotfiles_imper";
       flake = false;
     };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
+      # to have it up-to-date or simply don't specify the nixpkgs input
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # ...
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    dotfiles_imper,
     ...
-  }: let
+  } @ inputs: let
     lib = nixpkgs.lib;
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -46,11 +53,11 @@
         inherit pkgs;
         modules = [
           ./home.nix
-
-          {
-            _module.args.dotfiles = dotfiles_imper;
-          }
         ];
+
+        extraSpecialArgs = {
+          inherit inputs;
+        };
       };
     };
   };

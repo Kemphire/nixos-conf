@@ -1,15 +1,20 @@
 {
   config,
   pkgs,
-  dotfiles,
+  inputs,
   ...
 }: let
-  configDir = dotfiles;
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "hitmonlee";
   home.homeDirectory = "/home/hitmonlee";
+
+  imports = [
+    # inputs.zen-browser.homeModules.beta
+    inputs.zen-browser.homeModules.twilight
+    # or inputs.zen-browser.homeModules.twilight-official
+  ];
 
   # find alternative for it
   # home.backupFileExtension = "backup";
@@ -188,6 +193,8 @@ in {
   programs.gh.enable = true;
   programs.vesktop.enable = true;
   programs.fastfetch.enable = true;
+  # zen-browser
+  programs.zen-browser.enable = true;
 
   # configure services here
   services = {
