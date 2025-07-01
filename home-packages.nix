@@ -40,4 +40,5 @@ with pkgs; [
   gopls
 
   telegram-desktop
+  thunderbird
 ]

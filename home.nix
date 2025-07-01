@@ -194,6 +194,30 @@ in {
   programs.vesktop.enable = true;
   programs.fastfetch.enable = true;
 
+  # thunderbird configuration
+  programs.thunderbird = {
+    enable = true;
+
+    profiles = {
+      personal = {
+        isDefault = true;
+        settings = {
+          "mail.identity.id1.fullName" = "Kartikey";
+          "mail.identity.id1.useremail" = "kartikeyshahi@hotmail.com";
+        };
+      };
+
+      work = {
+        isDefault = false;
+        settings = {
+          "mail.identity.id1.fullName" = "Kartikey Shahi";
+          "mail.identity.id1.useremail" = "kartikey.23558@sscbs.du.ac.in";
+          "withPrivateBrowsing" = true;
+        };
+      };
+    };
+  };
+
   # zen-browser
   programs.zen-browser = {
     enable = true;
