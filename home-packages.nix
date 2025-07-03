@@ -7,6 +7,7 @@ with pkgs; [
   alacritty
   zathura
   vivaldi
+  google-chrome
   fish
   kitty
   foot
