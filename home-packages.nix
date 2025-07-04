@@ -42,4 +42,6 @@ with pkgs; [
 
   telegram-desktop
   thunderbird
+
+  zed-editor
 ]

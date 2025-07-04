@@ -242,6 +242,10 @@ in {
     };
   };
 
+  programs.zed-editor = {
+    enable = true;
+  };
+
   # configure services here
   services = {
     ssh-agent.enable = true;
